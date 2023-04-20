@@ -13,12 +13,17 @@ from src.components.data_transformation import DataTransformation
 
 @dataclass
 class DataIngestionconfig:
+    """The DataIngestionconfig class is decorated with @dataclass and has three attributes train_data_path, 
+       test_data_path, and raw_data_path that have default values pointing to file paths in the artifacts directory."""
     train_data_path:str=os.path.join('artifacts','train.csv')
     test_data_path:str=os.path.join('artifacts','test.csv')
     raw_data_path:str=os.path.join('artifacts','raw.csv')
 
 ## create a class for Data Ingestion
 class DataIngestion:
+    """The DataIngestion class has an initiate_data_ingestion method that reads data from a CSV file,
+       saves it to a specified file path, splits it into train and test sets, and saves them to separate 
+       file paths; logs messages using the logging module; and catches and raises exceptions using the CustomException class."""
     def __init__(self):
         self.ingestion_config=DataIngestionconfig()
 

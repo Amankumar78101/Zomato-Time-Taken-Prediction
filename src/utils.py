@@ -9,6 +9,8 @@ from src.exception import CustomException
 from src.logger import logging
 
 def save_object(file_path, obj):
+    """The save_object function takes a file path and an object as inputs, creates a directory 
+    for the file if it doesn't exist, then saves the object to the file using pickle."""
     try:
         dir_path = os.path.dirname(file_path)
 
@@ -21,6 +23,9 @@ def save_object(file_path, obj):
         raise CustomException(e, sys)
     
 def evaluate_model(X_train,y_train,X_test,y_test,models):
+    """The evaluate_model function takes X_train, y_train, X_test, y_test, and a dictionary of models as inputs, 
+        fits each model on the training data, predicts the testing data, and calculates R2 scores for each model on 
+        the test data, then returns a dictionary containing the R2 scores for each model."""
     try:
         report = {}
         for i in range(len(models)):
@@ -46,6 +51,8 @@ def evaluate_model(X_train,y_train,X_test,y_test,models):
         raise CustomException(e,sys)
     
 def load_object(file_path):
+    """The load_object function takes a file path as input, opens the file in binary mode, loads the 
+        object from the file using pickle, and returns the loaded object."""
     try:
         with open(file_path,'rb') as file_obj:
             return pickle.load(file_obj)

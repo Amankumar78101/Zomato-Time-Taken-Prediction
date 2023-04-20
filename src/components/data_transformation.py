@@ -14,11 +14,14 @@ from src.utils import save_object
 
 @dataclass
 class DataTransformationConfig:
-    # seving the preprocessor file
+    """The DataTransformationConfig class has a preprocessor_obj_file_path attribute that points 
+       to a file path in the artifacts directory where the preprocessor object will be saved as a pickle file"""
+    
     preprocessor_obj_file_path=os.path.join('artifacts','preprocessor.pkl')
     preprocessor_obj_file_path=os.path.join('artifacts','preprocessor1.pkl')
 
 class DataTransformation:
+
     def __init__(self):
         self.data_transformation_config=DataTransformationConfig()
 
@@ -60,11 +63,8 @@ class DataTransformation:
                                             ('cat_pipeline',cat_pipeline,categorical_cols)
                                             ])
 
-            
-            return preprocessor
-
             logging.info('Pipeline Completed')
-
+            return preprocessor
         except Exception as e:
             logging.info("Error in Data Trnasformation")
             raise CustomException(e,sys)
@@ -102,7 +102,7 @@ class DataTransformation:
 
             logging.info("Applying preprocessing object on training and testing datasets.")
 
-            """This code combines the input feature array and target feature array horizontally using NumPy's np.c_ method,
+            """This code combines the input featureS array and target featureS array horizontally using NumPy's np.c_ method,
               creating the final training and testing arrays for the machine learning model."""
             
             train_arr = np.c_[input_feature_train_arr, np.array(target_feature_train_df)]
