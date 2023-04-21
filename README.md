@@ -221,3 +221,45 @@ for i in range(len(list(models))):
     print('='*35)
     print('\n')
 ```
+
+
+### Build Docker Image 
+```
+docker build -t <image_name:<tagname>>
+```
+>Note:Image name for docker must be lowercase
+
+###To list see docker image
+```
+docker image
+```
+
+
+### To Run the docker image
+```
+docker run -p 5000:5000 <image_name>
+```
+
+### To Container is running
+```
+docker ps
+```
+
+### To Stop Container to run 
+```
+docker stop
+```
+
+### To remove the docker image
+```
+docker image rm -f <image_name>
+```
+
+
+### To push docker image
+```
+docker push <image_name>:tag
+```
+
+
+
